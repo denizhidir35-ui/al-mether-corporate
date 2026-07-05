@@ -1,0 +1,53 @@
+﻿"use client";
+
+const cards = [
+  ["AI", "Artificial Intelligence", "🧠"],
+  ["NETWORK", "Fiber Infrastructure", "⌁"],
+  ["LEGAL", "Legal Technology", "⚖"],
+  ["FIELD", "Workforce Platform", "👥"],
+  ["CORE", "Shared Platform", "◇"],
+];
+
+export function MetherCore() {
+  return (
+    <section className="core2">
+      <div className="core2-stars core2-stars-left" />
+      <div className="core2-stars core2-stars-right" />
+
+      <video className="core2-logo-video" src="/mether-logo.mp4?v=1" autoPlay muted loop playsInline preload="auto" />
+
+      <nav className="core2-nav">
+        <a>KURUMSAL</a>
+        <a>TEKNOLOJİLER</a>
+        <a>ÇÖZÜMLER</a>
+        <a>PROJELER</a>
+        <a>İLETİŞİM</a>
+      </nav>
+
+      <div className="core2-left">
+        <p>METHER CORE</p>
+        <h2>
+          BİR ÇEKİRDEK.
+          <span>SONSUZ OLASILIK.</span>
+        </h2>
+        <h3>
+          METHER; fiber altyapıdan yapay zekâya, kurumsal yazılımdan saha operasyonlarına kadar aynı çekirdek mimari üzerinde büyüyen teknoloji ekosistemidir.
+        </h3>
+        <button>DAHA FAZLASI →</button>
+      </div>
+
+      <div className="core2-cards">
+        {cards.map(([title, text, icon]) => (
+          <article key={title} className="core2-card">
+            <strong>{icon}</strong>
+            <div>
+              <h4>{title}</h4>
+              <p>{text}</p>
+            </div>
+            <span>→</span>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}

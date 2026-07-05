@@ -1,10 +1,12 @@
 ﻿import { MetherHero } from "@/components/hero/MetherHero";
+import { MetherCinematicEngine } from "@/components/effects/MetherCinematicEngine";
 import { MetherCore } from "@/components/sections/MetherCore";
 import MetherTechnologies from "@/components/sections/Technologies/MetherTechnologies";
 
 export default function Home() {
   return (
     <>
+      <MetherCinematicEngine />
       <MetherHero />
       <MetherCore />
       <MetherTechnologies />

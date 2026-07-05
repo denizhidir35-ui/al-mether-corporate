@@ -1,0 +1,105 @@
+﻿.bridge {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, #02040a 0%, #030817 42%, #02030a 100%);
+}
+
+.darkTop,
+.darkBottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.darkTop {
+  top: 0;
+  background: linear-gradient(180deg, #02040a 0%, transparent 100%);
+}
+
+.darkBottom {
+  bottom: 0;
+  background: linear-gradient(0deg, #02030a 0%, transparent 100%);
+}
+
+.orb {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 520px;
+  height: 180px;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(circle, rgba(0, 183, 255, .28), transparent 62%),
+    radial-gradient(circle at 65% 40%, rgba(156, 92, 255, .24), transparent 55%);
+  filter: blur(34px);
+  opacity: .8;
+  animation: pulse 5s ease-in-out infinite;
+}
+
+.line {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  top: 50%;
+  height: 1px;
+  z-index: 2;
+  background: linear-gradient(90deg, transparent, rgba(0,183,255,.75), rgba(156,92,255,.75), transparent);
+  box-shadow: 0 0 28px rgba(0,183,255,.44);
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.particles span {
+  --delay: calc(var(--i) * -0.22s);
+  position: absolute;
+  left: calc(6% + (var(--i) * 5%));
+  top: calc(45% + ((var(--i) % 5) - 2) * 10px);
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(128, 208, 255, .95);
+  box-shadow: 0 0 18px rgba(128, 208, 255, .9);
+  opacity: 0;
+  animation: particle 3.6s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(.96); opacity: .55; }
+  50% { transform: translate(-50%, -50%) scale(1.08); opacity: .9; }
+}
+
+@keyframes particle {
+  0% { transform: translate3d(-24px, 16px, 0) scale(.5); opacity: 0; }
+  30% { opacity: .95; }
+  100% { transform: translate3d(52px, -18px, 0) scale(1); opacity: 0; }
+}
+
+@media (max-width: 680px) {
+  .bridge {
+    height: 150px;
+  }
+
+  .orb {
+    width: 360px;
+    height: 130px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orb,
+  .particles span {
+    animation: none;
+  }
+}

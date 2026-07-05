@@ -1368,7 +1368,54 @@ background-position:-320px 220px;
 
 
 
+/* METHER SCENE SCROLL MOTION - SAFE TEST */
+:root {
+  --scene-scroll: 0;
+}
 
+.mether-hero {
+  transform-origin: center bottom;
+  transition: filter .25s ease;
+}
 
+body.mether-scene-active .mether-hero {
+  filter: brightness(calc(1 - (var(--scene-scroll) * .12))) saturate(calc(1 + (var(--scene-scroll) * .18)));
+}
 
+body.mether-scene-active .hero-stage {
+  transform: scale(calc(1 + (var(--scene-scroll) * .055))) translateY(calc(var(--scene-scroll) * -18px)) !important;
+}
 
+.mether-page-open {
+  position: relative;
+  z-index: 2;
+  transform-origin: top center;
+  transform:
+    perspective(1400px)
+    rotateX(calc((1 - var(--scene-scroll)) * 9deg))
+    translateY(calc((1 - var(--scene-scroll)) * -42px));
+  opacity: calc(.72 + (var(--scene-scroll) * .28));
+  transition: transform .08s linear, opacity .08s linear;
+  will-change: transform, opacity;
+}
+
+.mether-page-open::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -2px;
+  height: 120px;
+  z-index: 50;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(34,211,238,.22), rgba(168,85,247,.08), transparent);
+  opacity: calc(.15 + (var(--scene-scroll) * .55));
+  mix-blend-mode: screen;
+}
+
+@media (max-width: 768px) {
+  .mether-page-open {
+    transform: none;
+    opacity: 1;
+  }
+}

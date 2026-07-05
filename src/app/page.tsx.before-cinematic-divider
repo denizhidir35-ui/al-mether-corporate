@@ -1,12 +1,16 @@
 ﻿import { MetherHero } from "@/components/hero/MetherHero";
+import { SceneScrollMotion } from "@/components/effects/SceneScrollMotion";
 import { MetherCore } from "@/components/sections/MetherCore";
 import MetherTechnologies from "@/components/sections/Technologies/MetherTechnologies";
 
 export default function Home() {
   return (
     <>
+      <SceneScrollMotion />
       <MetherHero />
-      <MetherCore />
+      <div className="mether-page-open">
+        <MetherCore />
+      </div>
       <MetherTechnologies />
     </>
   );
