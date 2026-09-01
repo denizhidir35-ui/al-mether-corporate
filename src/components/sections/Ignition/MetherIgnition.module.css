@@ -11,7 +11,7 @@
   position: absolute;
   inset: 18% -4% -22%;
   z-index: 0;
-  background-image: url("/fiber-bg.png");
+  background-image: url("/fiber-bg.webp");
   background-size: cover;
   background-position: center 58%;
   opacity: .52;

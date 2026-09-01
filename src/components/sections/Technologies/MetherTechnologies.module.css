@@ -11,7 +11,7 @@
   position: absolute;
   inset: -2%;
   z-index: 0;
-  background-image: url("/fiber-bg.png");
+  background-image: url("/fiber-bg.webp");
   background-size: cover;
   background-position: center;
   opacity: .78;
@@ -131,6 +131,9 @@
 }
 
 .cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 30px;
   height: 48px;
   padding: 0 22px;
@@ -141,6 +144,7 @@
   font-size: 13px;
   font-weight: 700;
   letter-spacing: .08em;
+  text-decoration: none;
   cursor: pointer;
   backdrop-filter: blur(16px);
   box-shadow: 0 0 34px rgba(57, 149, 255, .22);
@@ -148,8 +152,22 @@
 }
 
 .cta span {
-  margin-left: 14px;
+  margin-inline-start: 14px;
   color: #b66cff;
+}
+
+:global([dir="rtl"]) .left,
+:global([dir="rtl"]) .card {
+  text-align: right;
+}
+
+:global([dir="rtl"]) .title {
+  letter-spacing: 0;
+  line-height: 1.08;
+}
+
+:global([dir="rtl"]) .desc {
+  line-height: 1.9;
 }
 
 .cta:hover {
@@ -263,6 +281,10 @@
 
   .title {
     font-size: clamp(38px, 12vw, 56px);
+  }
+
+  :global([dir="rtl"]) .title {
+    font-size: clamp(36px, 10.8vw, 52px);
   }
 
   .right {

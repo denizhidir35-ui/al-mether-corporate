@@ -1,68 +1,28 @@
-﻿"use client";
-
 import styles from "./MetherTechnologies.module.css";
+import type { Dictionary } from "@/lib/i18n/config";
 
-const techCards = [
-  { id: "01", title: "Fiber", text: "Yüksek hızlı altyapı." },
-  { id: "02", title: "AI", text: "Akıllı otomasyon." },
-  { id: "03", title: "Cloud", text: "Ölçeklenebilir bulut." },
-  { id: "04", title: "Data", text: "Veriden içgörü." },
-  { id: "05", title: "Security", text: "Uçtan uca güvenlik." },
-  { id: "06", title: "Enterprise", text: "Kurumsal yazılım." },
-];
-
-export default function MetherTechnologies() {
+export default function MetherTechnologies({ copy }: { copy: Dictionary["technologies"] }) {
   return (
-    <section id="technologies" className={styles.section}>
+    <section id="technologies" className={styles.section} aria-labelledby="technologies-title">
       <div className={styles.bgImage} />
       <div className={styles.bgShade} />
-
-      <div className={styles.beams}>
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
-
+      <div className={styles.beams}><span /><span /><span /><span /></div>
       <div className={styles.photons}>
-        {Array.from({ length: 46 }).map((_, index) => (
-          <span key={index} style={{ "--i": index } as React.CSSProperties} />
-        ))}
+        {Array.from({ length: 46 }).map((_, index) => <span key={index} style={{ "--i": index } as React.CSSProperties} />)}
       </div>
 
       <div className={styles.content}>
         <div className={styles.left}>
-          <p className={styles.eyebrow}>METHER TECHNOLOGIES</p>
-
-          <h2 className={styles.title}>
-            Fiberden
-            <br />
-            Yapay zekâya
-            <br />
-            uzanan
-            <br />
-            <span>teknoloji</span>
-            <br />
-            omurgası.
-          </h2>
-
-          <p className={styles.desc}>
-            Fiber altyapı, yapay zekâ, bulut, veri güvenliği ve kurumsal
-            yazılım katmanlarını tek omurgada birleştiriyoruz.
-          </p>
-
-          <button className={styles.cta}>
-            Keşfet <span>→</span>
-          </button>
+          <p className={styles.eyebrow}>{copy.eyebrow}</p>
+          <h2 id="technologies-title" className={styles.title}>{copy.titleLines[0]}<br />{copy.titleLines[1]}<br />{copy.titleLines[2]}<br /><span>{copy.titleLines[3]}</span><br />{copy.titleLines[4]}</h2>
+          <p className={styles.desc}>{copy.description}</p>
+          <a className={styles.cta} href="#contact">{copy.cta} <span aria-hidden="true" dir="ltr">→</span></a>
         </div>
 
         <div className={styles.right}>
-          {techCards.map((card) => (
-            <article key={card.id} className={styles.card}>
-              <div className={styles.cardTop}>
-                <span>{card.id}</span>
-                <i />
-              </div>
+          {copy.cards.map((card, index) => (
+            <article key={card.title} className={styles.card}>
+              <div className={styles.cardTop}><span>{String(index + 1).padStart(2, "0")}</span><i /></div>
               <h3>{card.title}</h3>
               <p>{card.text}</p>
             </article>

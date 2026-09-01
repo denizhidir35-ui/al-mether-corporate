@@ -1,5 +1,7 @@
-import Navbar from "@/components/layout/Navbar";
 import { socialLinks, type SocialPlatform } from "@/lib/config/social";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { HeroVideo } from "@/components/hero/HeroVideo";
+import type { Dictionary, Locale } from "@/lib/i18n/config";
 
 function IconLinkedIn() {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.98H3.75V20h3.19V8.98ZM5.34 4a1.84 1.84 0 1 0 0 3.68A1.84 1.84 0 0 0 5.34 4ZM20.25 13.66c0-3.1-1.66-4.54-3.87-4.54-1.78 0-2.58.98-3.02 1.67h-.04V8.98h-3.06V20h3.19v-5.45c0-1.44.27-2.83 2.05-2.83 1.76 0 1.78 1.65 1.78 2.92V20h3.19l-.22-6.34Z" /></svg>;
@@ -31,26 +33,27 @@ function SocialLinks({ iconsOnly = false }: { iconsOnly?: boolean }) {
   });
 }
 
-export function MetherHero() {
+export function MetherHero({ locale, copy }: { locale: Locale; copy: Dictionary["hero"] }) {
   return (
     <section id="home" className="mether-hero relative overflow-hidden bg-black" aria-labelledby="hero-title">
-      <video className="hero-video absolute inset-0 h-full w-full object-cover" src="/mether-hero.mp4?v=13" poster="/hero-bg.png" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
-        Tarayıcınız arka plan videosunu desteklemiyor.
-      </video>
+      <LanguageSwitcher locale={locale} />
+      <HeroVideo fallback={copy.videoFallback} />
       <div className="hero-cinema-fade" />
-      <Navbar />
 
       <div className="hero-copy">
-        <p className="hero-eyebrow">GELECEĞİ BİRLİKTE İNŞA EDİYORUZ</p>
-        <h1 id="hero-title">Geleceğin iletişim <span>altyapılarını</span> tasarlıyoruz.</h1>
-        <p className="hero-description">Fiber optik altyapıdan yapay zekâya, dijital dönüşümden akıllı şehir teknolojilerine kadar geleceğin iletişim altyapılarını tasarlıyor ve hayata geçiriyoruz.</p>
-        <a className="hero-primary-cta" href="#products">Projelerimizi İncele <span aria-hidden="true">→</span></a>
+        <p className="hero-eyebrow">{copy.eyebrow}</p>
+        <h1 id="hero-title">{copy.titleStart} <span>{copy.titleAccent}</span> {copy.titleEnd}</h1>
+        <p className="hero-description">{copy.description}</p>
+        <div className="hero-actions">
+          <a className="hero-primary-cta" href="#technologies">{copy.projectsCta} <span aria-hidden="true" dir="ltr">→</span></a>
+          <a className="hero-contact-cta" href="#contact">{copy.contactCta} <span aria-hidden="true" dir="ltr">↓</span></a>
+        </div>
       </div>
 
-      <aside className="right-socialbar" aria-label="METHER sosyal medya hesapları">
-        <div className="social-inner"><span className="social-label">SOSYAL</span><span className="social-line" /><SocialLinks iconsOnly /></div>
+      <aside className="right-socialbar" aria-label={copy.socialAria}>
+        <div className="social-inner"><span className="social-label">{copy.socialLabel}</span><span className="social-line" /><SocialLinks iconsOnly /></div>
       </aside>
-      <nav className="mobile-socials" aria-label="METHER sosyal medya hesapları"><SocialLinks /></nav>
+      <nav className="mobile-socials" aria-label={copy.socialAria}><SocialLinks /></nav>
     </section>
   );
 }

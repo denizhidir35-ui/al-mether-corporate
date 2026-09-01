@@ -1,53 +1,80 @@
-﻿"use client";
+import { socialLinks } from "@/lib/config/social";
+import type { Dictionary } from "@/lib/i18n/config";
+import styles from "./MetherCore.module.css";
 
-const cards = [
-  ["AI", "Artificial Intelligence", "🧠"],
-  ["NETWORK", "Fiber Infrastructure", "⌁"],
-  ["LEGAL", "Legal Technology", "⚖"],
-  ["FIELD", "Workforce Platform", "👥"],
-  ["CORE", "Shared Platform", "◇"],
-];
-
-export function MetherCore() {
+export function MetherCore({ copy, footerCopy }: { copy: Dictionary["corporate"]; footerCopy: Dictionary["footer"] }) {
   return (
-    <section id="corporate" className="core2">
-      <div className="core2-stars core2-stars-left" />
-      <div className="core2-stars core2-stars-right" />
+    <section id="contact" className={styles.section} aria-labelledby="corporate-title">
+      <div className={styles.ambient} aria-hidden="true" />
+      <div className={styles.grid} aria-hidden="true" />
 
-      <video className="core2-logo-video" src="/mether-logo.mp4?v=1" autoPlay muted loop playsInline preload="auto" />
+      <div className={styles.content}>
+        <header className={styles.intro}>
+          <div className={styles.identity}>
+            <p className={styles.eyebrow}>{copy.eyebrow}</p>
+            <h2 id="corporate-title">
+              {copy.titleStart}
+              <span>{copy.titleAccent}</span>
+            </h2>
+            <p className={styles.summary}>{copy.summary}</p>
+          </div>
 
-      <nav className="core2-nav">
-        <a>KURUMSAL</a>
-        <a>TEKNOLOJİLER</a>
-        <a>ÇÖZÜMLER</a>
-        <a>PROJELER</a>
-        <a>İLETİŞİM</a>
-      </nav>
+          <aside className={styles.vision} aria-labelledby="vision-title">
+            <span className={styles.visionIndex}>{copy.visionLabel}</span>
+            <div className={styles.orbit} aria-hidden="true"><i /><i /></div>
+            <h3 id="vision-title">{copy.visionTitleStart}<br />{copy.visionTitleEnd}</h3>
+            <p>{copy.visionText}</p>
+          </aside>
+        </header>
 
-      <div className="core2-left">
-        <p>METHER CORE</p>
-        <h2>
-          BİR ÇEKİRDEK.
-          <span>SONSUZ OLASILIK.</span>
-        </h2>
-        <h3>
-          METHER; fiber altyapıdan yapay zekâya, kurumsal yazılımdan saha operasyonlarına kadar aynı çekirdek mimari üzerinde büyüyen teknoloji ekosistemidir.
-        </h3>
-        <button>DAHA FAZLASI →</button>
-      </div>
-
-      <div className="core2-cards">
-        {cards.map(([title, text, icon]) => (
-          <article key={title} className="core2-card">
-            <strong>{icon}</strong>
-            <div>
-              <h4>{title}</h4>
-              <p>{text}</p>
+        <div className={styles.areas} aria-label={copy.areasAria}>
+          {copy.areas.map((area, index) => (
+            <div key={area} className={styles.area}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{area}</strong>
             </div>
-            <span>→</span>
-          </article>
-        ))}
+          ))}
+        </div>
+
+        <div className={styles.actions}>
+          <a
+            className={styles.legal}
+            href="https://legal.almether.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={copy.legalAria}
+          >
+            <span className={styles.actionLabel}>{copy.ecosystemLabel}</span>
+            <strong>METHER Legal</strong>
+            <p>{copy.legalDescription}</p>
+            <i aria-hidden="true" dir="ltr">↗</i>
+          </a>
+
+          <div className={styles.contact}>
+            <span className={styles.actionLabel}>{copy.contactLabel}</span>
+            <h3>{copy.contactTitleStart}<br />{copy.contactTitleEnd}</h3>
+            <div className={styles.contactLinks}>
+              <a href="mailto:info@almether.com">info@almether.com</a>
+              <a className={styles.contactCta} href="mailto:info@almether.com">{copy.contactCta} <span aria-hidden="true" dir="ltr">→</span></a>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <footer className={styles.footer}>
+        <div className={styles.footerBrand}>
+          <strong>METHER</strong>
+          <span>Engineering Tomorrow.</span>
+        </div>
+        <span className={styles.copyright}>© 2026 METHER</span>
+        <nav className={styles.footerLinks} aria-label={footerCopy.navigationAria}>
+          <a href="mailto:info@almether.com">info@almether.com</a>
+          <a href="https://legal.almether.com" target="_blank" rel="noopener noreferrer">{footerCopy.legal}</a>
+          {socialLinks.map((social) => (
+            <a key={social.platform} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.ariaLabel}>{social.label}</a>
+          ))}
+        </nav>
+      </footer>
     </section>
   );
 }
