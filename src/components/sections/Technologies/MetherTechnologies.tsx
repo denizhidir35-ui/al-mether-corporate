@@ -13,7 +13,7 @@ const techCards = [
 
 export default function MetherTechnologies() {
   return (
-    <section className={styles.section}>
+    <section id="technologies" className={styles.section}>
       <div className={styles.bgImage} />
       <div className={styles.bgShade} />
 

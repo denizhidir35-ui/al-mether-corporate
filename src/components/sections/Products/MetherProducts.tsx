@@ -1,52 +1,47 @@
-﻿import styles from "./MetherProducts.module.css";
-import { LivingLogo } from "@/components/ui/LivingLogo/LivingLogo";
+import { productRegistry, type MetherProduct } from "@/lib/products/registry";
+import styles from "./MetherProducts.module.css";
 
-const products = [
-  { name: "Legal", desc: "Deadline & legal intelligence" },
-  { name: "Workforce", desc: "Smart workforce operations" },
-  { name: "Field", desc: "Fiber field management" },
-  { name: "CFO", desc: "Finance & cost control" },
-  { name: "AI Core", desc: "Shared intelligence layer" },
-  { name: "Telecom", desc: "Infrastructure systems" },
-];
+const statusLabels: Record<MetherProduct["status"], string> = {
+  core: "CORE",
+  active: "CANLI",
+  prototype: "GELİŞİYOR",
+  future: "YAKINDA",
+};
 
 export default function MetherProducts() {
   return (
-    <section className={styles.section}>
+    <section id="products" className={styles.section} aria-labelledby="products-title">
       <div className={styles.bg} />
       <div className={styles.grid} />
-      <div className={styles.orbitGlow} />
+      <div className={styles.content}>
+        <header className={styles.header}>
+          <p>METHER PRODUCTS</p>
+          <h2 id="products-title">Tek çekirdek.<br /><span>Çoklu ürün ekosistemi.</span></h2>
+          <div>Her ürün ortak METHER mimarisi üzerinde büyür. Yeni ürünler, ana deneyimi yeniden kurmadan bu ekosisteme bağlanır.</div>
+        </header>
 
-      <div className={styles.left}>
-        <p>METHER PRODUCTS</p>
-        <h2>
-          Tek çekirdek.
-          <br />
-          Çoklu ürün
-          <br />
-          ekosistemi.
-        </h2>
-        <span>
-          Legal, Workforce, Field, CFO ve AI ürünleri aynı Mether Core üzerinde
-          birbirine bağlı şekilde çalışır.
-        </span>
-      </div>
+        <div className={styles.products}>
+          {productRegistry.map((product) => {
+            const content = (
+              <>
+                <div className={styles.cardTop}>
+                  <span className={styles.status}>{statusLabels[product.status]}</span>
+                  {product.external && <span className={styles.external} aria-hidden="true">↗</span>}
+                </div>
+                <h3>{product.name}</h3>
+                <p>{product.description}</p>
+              </>
+            );
 
-      <div className={styles.orbit}>
-        <div className={styles.core}>
-          <LivingLogo />
+            return product.href ? (
+              <a key={product.id} className={styles.card} data-accent={product.accent} href={product.href} target={product.external ? "_blank" : undefined} rel={product.external ? "noopener noreferrer" : undefined} aria-label={`${product.name} — Legal Technology`}>
+                {content}
+              </a>
+            ) : (
+              <article key={product.id} className={styles.card} data-accent={product.accent}>{content}</article>
+            );
+          })}
         </div>
-
-        {products.map((item, index) => (
-          <article
-            key={item.name}
-            className={styles.node}
-            style={{ "--i": index } as React.CSSProperties}
-          >
-            <h3>{item.name}</h3>
-            <p>{item.desc}</p>
-          </article>
-        ))}
       </div>
     </section>
   );

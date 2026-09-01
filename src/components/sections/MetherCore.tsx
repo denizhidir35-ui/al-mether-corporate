@@ -10,7 +10,7 @@ const cards = [
 
 export function MetherCore() {
   return (
-    <section className="core2">
+    <section id="corporate" className="core2">
       <div className="core2-stars core2-stars-left" />
       <div className="core2-stars core2-stars-right" />
 
