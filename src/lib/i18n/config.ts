@@ -56,13 +56,10 @@ export type Dictionary = {
     titleStart: string;
     titleAccent: string;
     summary: string;
-    visionLabel: string;
-    visionTitleStart: string;
-    visionTitleEnd: string;
-    visionText: string;
-    areasAria: string;
+    coreAria: string;
     areas: string[];
     ecosystemLabel: string;
+    liveLabel: string;
     legalDescription: string;
     legalAria: string;
     contactLabel: string;
@@ -119,13 +116,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
       titleStart: "Altyapı ile zekâ",
       titleAccent: "arasında bir çekirdek.",
       summary: "METHER; fiziksel altyapıyı, yapay zekâyı ve kurumsal yazılımı tek teknoloji omurgasında birleştiren mühendislik şirketidir.",
-      visionLabel: "01 / VİZYON",
-      visionTitleStart: "Bağlantı kuran sistemlerden,",
-      visionTitleEnd: "karar veren sistemlere.",
-      visionText: "Bugünün altyapısını yarının otonom teknoloji ekosistemine dönüştürüyoruz.",
-      areasAria: "METHER teknoloji alanları",
+      coreAria: "METHER dijital enerji çekirdeği",
       areas: ["Fiber", "AI", "Cloud", "Data", "Security", "Enterprise"],
       ecosystemLabel: "METHER ECOSYSTEM / LIVE",
+      liveLabel: "CANLI",
       legalDescription: "Hukuk ekipleri için kritik süre, belge ve dava süreçleri tek platformda.",
       legalAria: "METHER Legal — Hukuk Teknolojisi",
       contactLabel: "İLETİŞİM",
@@ -177,13 +171,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
       titleStart: "The core between",
       titleAccent: "infrastructure and intelligence.",
       summary: "METHER is an engineering company that unites physical infrastructure, artificial intelligence and enterprise software on one technology backbone.",
-      visionLabel: "01 / VISION",
-      visionTitleStart: "From systems that connect",
-      visionTitleEnd: "to systems that decide.",
-      visionText: "We transform today's infrastructure into tomorrow's autonomous technology ecosystem.",
-      areasAria: "METHER technology areas",
+      coreAria: "METHER digital energy core",
       areas: ["Fiber", "AI", "Cloud", "Data", "Security", "Enterprise"],
       ecosystemLabel: "METHER ECOSYSTEM / LIVE",
+      liveLabel: "LIVE",
       legalDescription: "Critical deadlines, documents and case workflows for legal teams—on one platform.",
       legalAria: "METHER Legal — Legal Technology",
       contactLabel: "CONTACT",
@@ -235,13 +226,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
       titleStart: "النواة التي تجمع",
       titleAccent: "البنية التحتية والذكاء.",
       summary: "METHER شركة هندسية تجمع البنية التحتية المادية والذكاء الاصطناعي وبرمجيات المؤسسات ضمن عمود تقني واحد.",
-      visionLabel: "01 / الرؤية",
-      visionTitleStart: "من أنظمة تبني الاتصال",
-      visionTitleEnd: "إلى أنظمة تصنع القرار.",
-      visionText: "نحوّل بنية اليوم التحتية إلى منظومة تقنية ذاتية للمستقبل.",
-      areasAria: "مجالات تقنية METHER",
+      coreAria: "نواة METHER الرقمية للطاقة",
       areas: ["الألياف", "الذكاء الاصطناعي", "السحابة", "البيانات", "الأمن", "المؤسسات"],
       ecosystemLabel: "METHER ECOSYSTEM / LIVE",
+      liveLabel: "مباشر",
       legalDescription: "المواعيد الحرجة والمستندات ومسارات القضايا للفرق القانونية في منصة واحدة.",
       legalAria: "METHER Legal — التقنية القانونية",
       contactLabel: "تواصل معنا",

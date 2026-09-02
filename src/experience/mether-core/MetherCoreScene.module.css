@@ -1,0 +1,111 @@
+.sceneFrame { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.photonLayer, .orbitLayer, .fiberLayer, .driftLayer { position: absolute; inset: 0; }
+.mobileBackground, .driftLayer { display: none; }
+
+.photonLayer i { position: absolute; width: 4px; height: 4px; border-radius: 50%; opacity: 0; background: #75ecff; box-shadow: 0 0 6px #4bdcff, 0 0 15px rgba(58, 202, 255, 0.72); animation: photonPulse 5.8s ease-in-out infinite; }
+.photonLayer i:nth-child(3n) { background: #a986ff; box-shadow: 0 0 6px #8760ff, 0 0 15px rgba(126, 80, 255, 0.7); }
+.photonLayer i:nth-child(1) { left: 58%; top: 31%; animation-delay: -1.2s; }
+.photonLayer i:nth-child(2) { left: 64%; top: 24%; animation-delay: -4.3s; }
+.photonLayer i:nth-child(3) { left: 71%; top: 37%; animation-delay: -2.7s; }
+.photonLayer i:nth-child(4) { left: 78%; top: 27%; animation-delay: -5.1s; }
+.photonLayer i:nth-child(5) { left: 84%; top: 42%; animation-delay: -0.8s; }
+.photonLayer i:nth-child(6) { left: 69%; top: 54%; animation-delay: -3.8s; }
+.photonLayer i:nth-child(7) { left: 76%; top: 61%; animation-delay: -1.9s; }
+.photonLayer i:nth-child(8) { left: 88%; top: 57%; animation-delay: -4.8s; }
+.photonLayer i:nth-child(9) { left: 92%; top: 34%; animation-delay: -2.2s; }
+.photonLayer i:nth-child(10) { left: 61%; top: 48%; animation-delay: -5.5s; }
+.photonLayer i:nth-child(11) { left: 81%; top: 70%; animation-delay: -3.1s; }
+.photonLayer i:nth-child(12) { left: 73%; top: 18%; animation-delay: -0.3s; }
+.photonLayer i:nth-child(13) { left: 94%; top: 66%; animation-delay: -4.1s; }
+.photonLayer i:nth-child(14) { left: 66%; top: 69%; animation-delay: -1.5s; }
+
+.orbitLayer i { position: absolute; left: 0; top: 0; width: 5px; height: 5px; border-radius: 50%; background: #80efff; box-shadow: 0 0 7px #47dfff, 0 0 17px rgba(39, 184, 255, 0.78); offset-rotate: 0deg; animation: orbitTravel 15s linear infinite; }
+.orbitLayer i:nth-child(3n + 1) { offset-path: ellipse(34% 26% at 74% 47%); }
+.orbitLayer i:nth-child(3n + 2) { offset-path: ellipse(29% 38% at 76% 48%); background: #8c68ff; animation-duration: 18s; }
+.orbitLayer i:nth-child(3n) { offset-path: ellipse(39% 19% at 73% 50%); background: #287fff; animation-duration: 13.5s; }
+.orbitLayer i:nth-child(1) { animation-delay: -1s; }
+.orbitLayer i:nth-child(2) { animation-delay: -7s; }
+.orbitLayer i:nth-child(3) { animation-delay: -10s; }
+.orbitLayer i:nth-child(4) { animation-delay: -12s; }
+.orbitLayer i:nth-child(5) { animation-delay: -3s; }
+.orbitLayer i:nth-child(6) { animation-delay: -6s; }
+.orbitLayer i:nth-child(7) { animation-delay: -9s; }
+.orbitLayer i:nth-child(8) { animation-delay: -14s; }
+.orbitLayer i:nth-child(9) { animation-delay: -4s; }
+
+.fiberLayer i { position: absolute; left: -4%; width: clamp(24px, 2.5vw, 44px); height: 2px; opacity: 0; border-radius: 999px; background: linear-gradient(90deg, transparent, #66e6ff 58%, #eefeff); filter: drop-shadow(0 0 5px rgba(53, 205, 255, 0.9)); animation: fiberFlow 7.5s cubic-bezier(0.3, 0.15, 0.62, 0.88) infinite; }
+.fiberLayer i:nth-child(1) { top: 35%; --fiber-y: 8vh; animation-delay: -1.2s; }
+.fiberLayer i:nth-child(2) { top: 42%; --fiber-y: 3vh; animation-delay: -5.8s; }
+.fiberLayer i:nth-child(3) { top: 48%; --fiber-y: -2vh; animation-delay: -3.4s; }
+.fiberLayer i:nth-child(4) { top: 55%; --fiber-y: -7vh; animation-delay: -7s; }
+.fiberLayer i:nth-child(5) { top: 61%; --fiber-y: -10vh; animation-delay: -2.4s; }
+.fiberLayer i:nth-child(6) { top: 29%; --fiber-y: 13vh; animation-delay: -6.3s; }
+.fiberLayer i:nth-child(7) { top: 68%; --fiber-y: -15vh; animation-delay: -4.6s; }
+.fiberLayer i:nth-child(8) { top: 51%; --fiber-y: 1vh; animation-delay: -0.2s; }
+
+@keyframes photonPulse { 0%, 68%, 100% { opacity: 0; transform: scale(0.45); } 76% { opacity: 0.82; transform: scale(1); } 84% { opacity: 0.16; transform: scale(1.75); } }
+@keyframes orbitTravel { from { offset-distance: 0%; opacity: 0.28; } 12%, 82% { opacity: 0.92; } to { offset-distance: 100%; opacity: 0.28; } }
+@keyframes fiberFlow { 0% { opacity: 0; transform: translate3d(0, 0, 0) scaleX(0.55); } 12% { opacity: 0.72; } 78% { opacity: 0.68; } 100% { opacity: 0; transform: translate3d(65vw, var(--fiber-y), 0) scaleX(1.1); } }
+
+@keyframes mobileEarthDrift { from { transform: scale(1.015) rotate(-0.18deg); } to { transform: scale(1.035) rotate(0.22deg); } }
+@keyframes particleDrift { 0% { opacity: 0; transform: translate3d(0, 8px, 0); } 25%, 72% { opacity: 0.32; } 100% { opacity: 0; transform: translate3d(16px, -22px, 0); } }
+
+@media (max-width: 900px) {
+  .mobileBackground { position: absolute; inset: -2%; display: block; opacity: 0; transform: scale(1.045); transition: opacity 0.9s ease, transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .mobileBackground::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(2, 5, 11, 0.94) 0%, rgba(2, 5, 11, 0.82) 31%, rgba(2, 5, 11, 0.24) 53%, rgba(2, 5, 11, 0.38) 100%); }
+  .mobileBackground i { position: absolute; inset: 0; display: block; background: url("/images/91d67371-78d7-46b4-82f2-eef534fc1686.png") center / cover no-repeat; transform-origin: 72% 54%; }
+  .sceneVisible .mobileBackground { opacity: 1; transform: scale(1); }
+  .sceneVisible .mobileBackground i { animation: mobileEarthDrift 30s ease-in-out 1.1s infinite alternate; }
+
+  .photonLayer, .orbitLayer, .fiberLayer, .driftLayer { opacity: 0; transition: opacity 0.5s ease; }
+  .sceneVisible .photonLayer { opacity: 1; transition-delay: 0.3s; }
+  .sceneVisible .orbitLayer { opacity: 1; transition-delay: 0.55s; }
+  .sceneVisible .fiberLayer { opacity: 1; transition-delay: 0.78s; }
+  .sceneVisible .driftLayer { opacity: 1; transition-delay: 0.2s; }
+  .sceneFrame:not(.sceneVisible) .photonLayer i,
+  .sceneFrame:not(.sceneVisible) .orbitLayer i,
+  .sceneFrame:not(.sceneVisible) .fiberLayer i,
+  .sceneFrame:not(.sceneVisible) .driftLayer i { animation-play-state: paused; }
+
+  .driftLayer { display: block; }
+  .orbitLayer i:nth-child(n + 4), .fiberLayer i:nth-child(n + 5), .driftLayer i:nth-child(n + 9) { display: none; }
+  .driftLayer i { position: absolute; width: 2px; height: 2px; border-radius: 50%; opacity: 0; background: rgba(103, 220, 255, 0.7); box-shadow: 0 0 5px rgba(79, 186, 255, 0.5); animation: particleDrift 11s ease-in-out infinite; }
+  .driftLayer i:nth-child(1) { left: 12%; top: 42%; animation-delay: -2s; }
+  .driftLayer i:nth-child(2) { left: 27%; top: 59%; animation-delay: -8s; }
+  .driftLayer i:nth-child(3) { left: 43%; top: 49%; animation-delay: -5s; }
+  .driftLayer i:nth-child(4) { left: 61%; top: 72%; animation-delay: -1s; }
+  .driftLayer i:nth-child(5) { left: 78%; top: 45%; animation-delay: -7s; }
+  .driftLayer i:nth-child(6) { left: 88%; top: 66%; animation-delay: -4s; }
+  .driftLayer i:nth-child(7) { left: 35%; top: 78%; animation-delay: -9s; }
+  .driftLayer i:nth-child(8) { left: 69%; top: 34%; animation-delay: -3s; }
+  .driftLayer i:nth-child(9) { left: 18%; top: 70%; animation-delay: -6s; }
+  .driftLayer i:nth-child(10) { left: 93%; top: 53%; animation-delay: -10s; }
+}
+
+@media (max-width: 620px) {
+  .mobileBackground i { background-position: 72% center; }
+  .photonLayer i:nth-child(n + 9), .fiberLayer i:nth-child(n + 4), .driftLayer i:nth-child(n + 7) { display: none; }
+  .photonLayer i:nth-child(1) { left: 46%; top: 54%; }
+  .photonLayer i:nth-child(2) { left: 58%; top: 48%; }
+  .photonLayer i:nth-child(3) { left: 68%; top: 59%; }
+  .photonLayer i:nth-child(4) { left: 80%; top: 51%; }
+  .photonLayer i:nth-child(5) { left: 72%; top: 70%; }
+  .photonLayer i:nth-child(6) { left: 89%; top: 66%; }
+  .photonLayer i:nth-child(7) { left: 55%; top: 73%; }
+  .photonLayer i:nth-child(8) { left: 84%; top: 78%; }
+  .orbitLayer i:nth-child(3n + 1) { offset-path: ellipse(48% 18% at 72% 65%); }
+  .orbitLayer i:nth-child(3n + 2) { offset-path: ellipse(34% 28% at 74% 65%); }
+  .orbitLayer i:nth-child(3n) { offset-path: ellipse(45% 12% at 73% 66%); }
+  .fiberLayer i { animation-duration: 8.5s; }
+  .fiberLayer i:nth-child(1) { top: 57%; }
+  .fiberLayer i:nth-child(2) { top: 63%; }
+  .fiberLayer i:nth-child(3) { top: 69%; }
+  .fiberLayer i:nth-child(4) { top: 74%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobileBackground, .photonLayer, .orbitLayer, .fiberLayer, .driftLayer { opacity: 1; transition: none; }
+  .mobileBackground i, .photonLayer i, .orbitLayer i, .fiberLayer i, .driftLayer i { animation: none; }
+  .photonLayer i, .orbitLayer i, .fiberLayer i { opacity: 0.12; }
+  .driftLayer i { display: none; }
+}
